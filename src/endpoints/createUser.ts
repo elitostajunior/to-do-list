@@ -9,9 +9,9 @@ export default async function createUser(req: Request, res: Response) {
            !req.body.nickname ||
            !req.body.email
         ) { 
-            res
-                .status(400)
-                .send('Preencha os campos "name", "nickname" e "e-mail"') 
+            res.status(400).send({
+                message: "Preencha os campos 'name', 'nickname' e 'e-mail'"
+            }) 
         }
 
         const id: string = Date.now() + Math.random().toString()
@@ -22,14 +22,10 @@ export default async function createUser(req: Request, res: Response) {
             req.body.nickname,
             req.body.email
         ) 
-        
-        { 
-            res
-                .status(200)
-                .send('Usuário criado com sucesso!') 
-        }
 
-        // responder a requisição
+        res.status(200).send({
+            message: "Usuário criado com sucesso!"
+        }) 
 
     } catch (error: any) {
         res.status(400).send({ message: error.message || error.sqlMessage })
