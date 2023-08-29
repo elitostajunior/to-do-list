@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
 import getUserById from "./endpoints/getUserById";
+import editUser from "./endpoints/editUser";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(cors());
 
 app.put('/user', createUser)
 app.get('/user/:id', getUserById)
+app.post('/user/edit/:id', editUser)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {

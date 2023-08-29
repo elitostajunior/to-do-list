@@ -5,10 +5,12 @@ export default async function getUserById(req: Request, res: Response) {
     try {
         const user = await selectUserById(req.params.id)
 
-        if(!user) {
+        if (!user) {
             res.status(404).send({
                 message: "Usuário não encontrado"
             })
+
+            return
         }
 
         res.status(200).send({

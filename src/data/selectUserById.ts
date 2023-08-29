@@ -6,6 +6,6 @@ export default async function selectUserById(
     const result = await connection('to_do_list_users')
         .select('*')
         .where({ id })
-        
+
     return result[0]
 }
