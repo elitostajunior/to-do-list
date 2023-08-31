@@ -1,5 +1,3 @@
-USE `joy-419508-eli-junior`;
-
 CREATE TABLE to_do_list_users (
 	id VARCHAR(64) PRIMARY KEY, 
     name VARCHAR(64) NOT NULL, 
@@ -24,3 +22,7 @@ CREATE TABLE to_do_list_assignees (
     FOREIGN KEY (task_id) REFERENCES to_do_list_tasks(id),
     FOREIGN KEY (assignee_id) REFERENCES to_do_list_users(id)
 );
+
+SELECT tasks.*, nickname FROM to_do_list_tasks AS tasks
+JOIN to_do_list_users AS users
+ON author_id = users.id;
